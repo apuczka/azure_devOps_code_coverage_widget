@@ -20,6 +20,6 @@ jobs:
     - name: Install packaging extension
       run: npm i -g tfx-cli
     - name: Build extension
-      run: tfx extension publish --publisher ppuczka --manifest-js myextension.config.js
+      run: tfx extension publish --manifest-globs vss-extension.json --publisher ppuczka
 
 #       run: tfx extension create --manifest-globs vss-extension.json --rev-version
