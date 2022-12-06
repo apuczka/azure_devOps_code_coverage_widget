@@ -1,0 +1,103 @@
+{
+    "manifestVersion": 1,
+    "id": "vsts-NGT-extensions",
+    "version": "1.0.136",
+    "name": "Test Widgets",
+    "description": "Samples containing different widgets extending dashboards",
+    "publisher": "prpu",
+    "categories": ["Azure Boards"],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "icons": {
+        "default": "img/logo.png"
+    },
+    "contributions": [
+        {
+            "id": "NGTTestWidget",
+            "type": "ms.vss-dashboards-web.widget",
+            "targets": [
+                "ms.vss-dashboards-web.widget-catalog",
+                "prpu.vsts-NGT-extensions.NGTTestWidget.Configuration"
+            ],
+            "properties": {
+                "name": "NGTTestWidget",
+                "description": "My test widget",
+                "catalogIconUrl": "img/logo.png",
+                "previewImageUrl": "img/logo.png",                            
+                "uri": "widget.html",
+                "supportedSizes": [
+                    {
+                            "rowSpan": 1,
+                            "columnSpan": 2
+                        }
+                    ],
+                "supportedScopes": ["project_team"]
+            }
+        },
+        {
+            "id": "NGTCoverageWidget",
+            "type": "ms.vss-dashboards-web.widget",
+            "targets": [
+                "ms.vss-dashboards-web.widget-catalog"
+            ],
+            "properties": {
+                "name": "NGT Coverage Widget",
+                "description": "NGT Coverage Widget",
+                "catalogIconUrl": "img/logo.png",
+                "previewImageUrl": "img/logo.png",                            
+                "uri": "coverage_widget.html",
+                "supportedSizes": [
+                    {
+                            "rowSpan": 1,
+                            "columnSpan": 2
+                        }
+                    ],
+                "supportedScopes": ["project_team"]
+            }
+        },
+        {
+            "id": "NGTTestWidget.Configuration",
+            "type": "ms.vss-dashboards-web.widget-configuration",
+            "targets": [ "ms.vss-dashboards-web.widget-configuration" ],
+            "properties": {
+                "name": "NGTTestWidget Configuration",
+                "description": "Configures NGTTestWidget",
+                "uri": "configuration.html"
+            }
+        }
+    ],
+    "files": [
+        {
+            "path": "configuration.html", "addressable": true
+        },
+        {
+            "path": "widget.html", "addressable": true
+        },
+        {
+            "path": "coverage_widget.html", "addressable": true
+        },
+        {
+            "path": "sdk/scripts/VSS.SDK.min.js", "addressable": true
+        },
+        {
+            "path": "scripts/query.js", "addressable": true
+        },
+        {
+            "path": "scripts/coverage.js", "addressable": true
+        },
+        {
+            "path": "img", "addressable": true
+        }
+
+    ],
+    "scopes":[
+        "vso.work", 
+        "vso.analytics",
+        "vso.build",
+        "vso.test"
+
+    ]
+}

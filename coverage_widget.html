@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<script src="sdk/scripts/VSS.SDK.min.js"></script>
+	<script src="scripts/coverage.js"></script>
+	<style>
+		#code_coverage_stats_container {
+			float: right;
+			height: 75%;
+			width: 110px;
+		}
+
+		#code_coverage_stats_container {
+			float: left;
+			height: 75%;
+			width: 220px;
+		}
+
+		#code_coverage {
+			font-size: 45px;
+
+		}
+
+		#code_coverage_diff {
+			font-size: 12px;
+		}
+
+		title {
+			height: auto;
+			font-size: medium;
+		}
+	</style>
+</head>
+
+<body>
+	<h1 class="title"></h1>
+	<div class="widget_container">
+		<div id="code_coverage_stats_container">
+		</div>
+		<div id="code_coverage_container">
+			<p id="code_coverage"></p>
+			<p id="code_coverage_diff"></p>
+		</div>
+	</div>
+</body>
+
+</html>
