@@ -1,0 +1,23 @@
+on:
+  push:
+    branches:
+    - main
+    - release/*
+
+jobs:
+  deploy_to_marketplace:
+    name: deploy to microsoft visualstudio marketplace
+    runs-on: ubuntu-18.04
+    
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js
+      uses: actions/setup-node@3
+      with:
+        node-version: 16
+    - name: Install Dependencies
+      run: npm install
+    - name: Install packaging extension
+      run: npm i -g tfx-cli
+    - name: Build extension
+      run: tfx extension create --manifest-globs vss-extension.json   
