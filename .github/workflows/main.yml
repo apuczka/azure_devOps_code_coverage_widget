@@ -20,4 +20,4 @@ jobs:
     - name: Install packaging extension
       run: npm i -g tfx-cli
     - name: Build extension
-      run: tfx extension create --manifest-globs vss-extension.json   
+      run: tfx extension create --manifest-globs vss-extension.json --rev-version
