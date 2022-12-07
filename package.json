@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "azure-devops-extension-sdk": "^2.0.11",
     "vss-web-extension-sdk": "^5.141.0"
   }
 }
