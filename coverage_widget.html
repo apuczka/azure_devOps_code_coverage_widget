@@ -4,43 +4,71 @@
 <head>
 	<script src="sdk/scripts/VSS.SDK.min.js"></script>
 	<script src="scripts/coverage.js"></script>
+	<script src="https://kit.fontawesome.com/f221034fdb.js" crossorigin="anonymous"></script>
+	
 	<style>
-		#code_coverage_stats_container {
-			float: right;
-			height: 75%;
-			width: 110px;
+		.widget_container {
+			display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+		}
+		#code_coverage_container {
+			display: flex;
+    background-color:cadetblue;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    align-content: center;
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
 		}
 
 		#code_coverage_stats_container {
-			float: left;
-			height: 75%;
+			display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+			/* float: left; */
+			/* height: 75%; */
 			width: 220px;
 		}
 
 		#code_coverage {
-			font-size: 45px;
+			font-size: 35px;
+			margin: 0;
 
 		}
 
 		#code_coverage_diff {
-			font-size: 12px;
+			font-size: 18px;
 		}
 
-		title {
-			height: auto;
-			font-size: medium;
+		.title {
+			position: absolute;
+    left: 10px;
+    top: -40px;
+	font-size: 20px;
+		}
+		img {
+			width: 20px;
+			height: 20px;
 		}
 	</style>
 </head>
 
 <body>
-	<h1 class="title"></h1>
 	<div class="widget_container">
 		<div id="code_coverage_stats_container">
+			<h1 class="title"></h1>
+
 		</div>
 		<div id="code_coverage_container">
 			<p id="code_coverage"></p>
 			<p id="code_coverage_diff"></p>
+			<img src="img/download.png">
 		</div>
 	</div>
 </body>

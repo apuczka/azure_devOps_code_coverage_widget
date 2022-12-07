@@ -7,17 +7,17 @@ VSS.require(["TFS/Dashboards/WidgetHelpers", "TFS/TestManagement/RestClient", "T
     function (WidgetHelpers, TFS_Test_Api, TFS_Build_Api) {
         WidgetHelpers.IncludeWidgetStyles();
         VSS.register("NGTCoverageWidget", function () {
-            var projectId = VSS.getWebContext().project.id;
-            var pipelineId = 105700;
-            var definitionIds = [];
-            definitionIds.push(417);
+            const projectId = VSS.getWebContext().project.id;
+            const pipelineId = 105700;
+            const definitionIds = [417];
+            
             return {
                 load: function (ngtWidget) {
-                    var testClient = TFS_Test_Api.getClient();
-                    var buildClient = TFS_Build_Api.getClient();
-                    var buildsToCompare = [];
+                    const testClient = TFS_Test_Api.getClient();
+                    const buildClient = TFS_Build_Api.getClient();
+                    let buildsToCompare = [];
 
-                    var buildList = buildClient.getBuilds(projectId, definitionIds, null, null, null, null, null, null, "Completed", "Succeeded", null, null, null, 2, null, null, null, null, null)
+                    let buildList = buildClient.getBuilds(projectId, definitionIds, null, null, null, null, null, null, "Completed", "Succeeded", null, null, null, 2, null, null, null, null, null)
                     buildList.then(builds => {
                         buildsToCompare.push(builds[0]);
                         buildsToCompare.push(builds[1]);
@@ -25,19 +25,18 @@ VSS.require(["TFS/Dashboards/WidgetHelpers", "TFS/TestManagement/RestClient", "T
                     })
                         .then((compare) => {
                             buildsToCompare.sort((a, b) => b.finishTime - a.finishTime);
-                            var latestBuild = buildsToCompare[0];
-                            var latestBuildLinesCovered = 0
-                            var latestBuildLinesTotal = 0
-                            var latestBuildCodeCoverage = 0
+                            const latestBuild = buildsToCompare[0];
+                            let latestBuildLinesCovered = 0
+                            let latestBuildLinesTotal = 0
+                            let latestBuildCodeCoverage = 0
 
-                            var previousBuild = buildsToCompare[1];
-                            var previousBuildLinesCovered = 0
-                            var previousBuildLinesTotal = 0
-                            var previousBuildCodeCoverage = 0
+                            const previousBuild = buildsToCompare[1];
+                            let previousBuildLinesCovered = 0
+                            let previousBuildLinesTotal = 0
+                            let previousBuildCodeCoverage = 0
 
-
-                            var latestBuildCodeCoverageData = getCodeCoverageForBuild(projectId, latestBuild.id, testClient);
-                            var previousBuildCodeCoverageData = getCodeCoverageForBuild(projectId, previousBuild.id, testClient);
+                            const latestBuildCodeCoverageData = getCodeCoverageForBuild(projectId, latestBuild.id, testClient);
+                            const previousBuildCodeCoverageData = getCodeCoverageForBuild(projectId, previousBuild.id, testClient);
 
                             latestBuildCodeCoverageData.then((latestBuildCodeCoverageData) => {
                                 latestBuildCodeCoverageData[0].coverageStats.forEach(stats => {
@@ -55,14 +54,14 @@ VSS.require(["TFS/Dashboards/WidgetHelpers", "TFS/TestManagement/RestClient", "T
                                     });
                                     previousBuildCodeCoverage = previousBuildLinesCovered / previousBuildLinesTotal * 100;
 
-                                    var codeCoverageDiff = latestBuildCodeCoverage - previousBuildCodeCoverage;
-                                    var coveredLinesDiff = latestBuildLinesCovered - previousBuildLinesCovered;
-                                    var totalLinesDiff = latestBuildLinesTotal - previousBuildLinesTotal;
+                                    const codeCoverageDiff = latestBuildCodeCoverage - previousBuildCodeCoverage;
+                                    const coveredLinesDiff = latestBuildLinesCovered - previousBuildLinesCovered;
+                                    const totalLinesDiff = latestBuildLinesTotal - previousBuildLinesTotal;
 
-                                    var $title = $('h1.title');
+                                    let $title = $('h1.title');
                                     $title.text('NGT Code Coverage');
 
-                                    var $codeCoverageContainer = $('#code_coverage_container');
+                                    let $codeCoverageContainer = $('#code_coverage_container');
                                     $codeCoverageContainer.css('backgroundColor', function () {
                                         if (latestBuildCodeCoverage < 70) {
                                             return "yellow"
@@ -71,13 +70,13 @@ VSS.require(["TFS/Dashboards/WidgetHelpers", "TFS/TestManagement/RestClient", "T
                                         }
                                     });
 
-                                    var $codeCoverage = $('#code_coverage')
+                                    let $codeCoverage = $('#code_coverage')
                                     $codeCoverage.text(codeCoverageDiff.toFixed(2))
-                                    var $codeCoverageDiff = $('#code_coverage_diff')
+                                    let $codeCoverageDiff = $('#code_coverage_diff')
                                     $codeCoverageDiff.text(codeCoverageDiff.toFixed(3))
 
-                                    var $codeCoverageStatsContainer = $("#code_coverage_stats_container")
-                                    var $list = $('<ul>');
+                                    let $codeCoverageStatsContainer = $("#code_coverage_stats_container")
+                                    let $list = $('<ul>');
                                     $list.append($('<li>').text("Pipeline id: " + pipelineId));
                                     $list.append($('<li>').text("Lines covered: " + latestBuildLinesCovered + " (+" + coveredLinesDiff + " lines)"));
                                     $list.append($('<li>').text("Lines total: " + latestBuildLinesTotal + " (+" + totalLinesDiff + " lines)"));
@@ -97,8 +96,8 @@ VSS.require(["TFS/Dashboards/WidgetHelpers", "TFS/TestManagement/RestClient", "T
     });
 
 async function getCodeCoverageForBuild(projectId, buildId, testClient) {
-    var resposne = await testClient.getCodeCoverageSummary(projectId, buildId)
-    var coverageData = await resposne.coverageData
+    const resposne = await testClient.getCodeCoverageSummary(projectId, buildId)
+    const coverageData = await resposne.coverageData
     return coverageData
 }
 
