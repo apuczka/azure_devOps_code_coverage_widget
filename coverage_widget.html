@@ -5,32 +5,35 @@
 	<script src="sdk/scripts/VSS.SDK.min.js"></script>
 	<script src="scripts/coverage.js"></script>
 	<script src="https://kit.fontawesome.com/f221034fdb.js" crossorigin="anonymous"></script>
-	
+
 	<style>
 		.widget_container {
 			display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-between;
 		}
+
 		#code_coverage_container {
 			display: flex;
-    background-color:cadetblue;
-    flex-direction: column;
-    margin: 0;
-    padding: 0;
-    align-content: center;
-    align-items: center;
-    height: 100vh;
-    justify-content: center;
+			/* background-color: cadetblue; */
+			flex-direction: column;
+			margin: 0;
+			padding: 0;
+			align-content: center;
+			align-items: center;
+			height: 100vh;
+			justify-content: center;
+			width: 110px;
+
 		}
 
 		#code_coverage_stats_container {
 			display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			position: relative;
 			/* float: left; */
 			/* height: 75%; */
 			width: 220px;
@@ -38,7 +41,7 @@
 
 		#code_coverage {
 			font-size: 35px;
-			margin: 0;
+			margin-top: 2px;
 
 		}
 
@@ -48,13 +51,16 @@
 
 		.title {
 			position: absolute;
-    left: 10px;
-    top: -40px;
-	font-size: 20px;
+			left: 3px;
+			top: -43px;
+			font-size: 26px;
 		}
+
 		img {
 			width: 20px;
 			height: 20px;
+			float: right;
+  			margin: 0px 0px 15px 20px;
 		}
 	</style>
 </head>

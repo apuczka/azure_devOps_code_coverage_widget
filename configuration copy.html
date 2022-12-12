@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <script src="sdk/scripts/VSS.SDK.min.js"></script>
+    <script src="scripts/config.js"></script>
+</head>
+
+<body>
+    <div class="widget-configuration">
+        <div class="single-line-text-input" id="title-input">
+            <label>Display title</label>
+            <input type="text" value="Code Coverage"></input>
+        </div>
+
+        <div class="dropdown" id="build-definition-dropdown">
+            <label>Build defitnition</label>
+            <div class="wrapper">
+                <select>
+                    <option value="Shared Queries/Feedback">Shared Queries/Feedback</option>
+                    <option value="Shared Queries/My Bugs">Shared Queries/My Bugs</option>
+                    <option value="Shared Queries/My Tasks">Shared Queries/My Tasks</option>
+                </select>
+            </div>
+
+            <label>Decimal place to show: </label>
+            <div class="wrapper">
+                <select id="decimal-dropdown">
+                    <option value="" selected disabled hidden>Please select</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                </select>
+            </div>
+
+            <fieldset class="checkbox" id="select_additional_options">
+                <legend>Select to display</legend>
+                <input type="checkbox" id="build-name" name="check" checked="true">
+                <label for="check-option1">Build name</label><br />
+                <input type="checkbox" id="lines-covered" name="check" checked="true">
+                <label for="check-option2">Lines covered</label><br />
+                <input type="checkbox" id="lines-total" name="check" checked="true">
+                <label for="check-option3">Lines total</label><br />
+                <input type="checkbox" id="coverage-delta" name="check" checked="true">
+                <label for="check-option4">Code coverage delta</label><br />
+            </fieldset>
+
+        </div>
+    </div>
+</body>
+
+</html>
