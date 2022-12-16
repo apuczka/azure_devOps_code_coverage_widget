@@ -65,23 +65,35 @@ VSS.require(["TFS/Dashboards/WidgetHelpers", "TFS/TestManagement/RestClient", "T
                                 $title.text('Code Coverage');
 
                                 let $codeCoverageContainer = $('#code_coverage_container');
-                                $codeCoverageContainer.css('backgroundColor', function () {
-                                    if (latestBuildCodeCoverage < 70) {
-                                        return "#FFCC00;"
-                                    } else {
-                                        return "green";
-                                    }
-                                });
+                                // $codeCoverageContainer.css('backgroundColor', function () {
+                                //     if (latestBuildCodeCoverage < 70) {
+                                //         return "#FFCC00;"
+                                //     } else {
+                                //         return "green";
+                                //     }
+                                // });
 
                                 let coverageDiffFormatted = "";
                                 if (codeCoverageDiff < 0) {
                                     coverageDiffFormatted = `- ${codeCoverageDiff.toFixed(2)}%`;
                                 } else {
-                                    coverageDiffFormatted = `+ ${codeCoverageDiff.toFixed(2)}%`;
+                                    coverageDiffFormatted =  ` + ${codeCoverageDiff.toFixed(2)}%`;
                                 };
 
+                                let thresholdOk = 70; 
+                                let thresholdWarn = 65;
+
                                 let $codeCoverage = $('#code_coverage');
-                                $codeCoverage.text(latestBuildCodeCoverage.toFixed(2) + "%");
+                                $codeCoverage.text(latestBuildCodeCoverage.toFixed(2) + "%").css('color', function() {
+                                    if(latestBuildCodeCoverage >= thresholdOk) {
+                                        return "green";
+                                    } else if (latestBuildCodeCoverage < thresholdOk && latestBuildCodeCoverage > thresholdWarn) {
+                                        return '#f3b47bbf';
+                                    } else {
+                                        return 'red';
+                                    }
+                                });
+
                                 let $codeCoverageDiff = $('#code_coverage_diff');
                                 $codeCoverageDiff.text(coverageDiffFormatted).css('color', function () {
                                     if (codeCoverageDiff < 0) {
@@ -95,7 +107,7 @@ VSS.require(["TFS/Dashboards/WidgetHelpers", "TFS/TestManagement/RestClient", "T
                                 $list.append($('<li>').text("Lines covered: " + latestBuildLinesCovered + " (+" + coveredLinesDiff + " lines)"));
                                 $list.append($('<li>').text("Lines total: " + latestBuildLinesTotal + " (+" + totalLinesDiff + " lines)"));
                                 $list.append($('<li><a href="' + buildUrl + ' "target="_blank">' + "More details" + '</a>'))
-                                $list.css({ 'list-style-type': 'none', 'padding-top': '0', 'margin-left': '0', 'font-size': '12px' })
+                                $list.css({ 'list-style-type': 'none', 'padding-top': '0', 'margin-left': '-20px', 'font-size': '12px', 'margin-right':'10px', 'margin-bottom':'-40px', 'display':'flex', 'flex-direction':'column', 'align-items':'flex-end' })
                                 $codeCoverageStatsContainer.append($list)
                             });
                             return latestBuildCodeCoverageData

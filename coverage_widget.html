@@ -4,63 +4,59 @@
 <head>
 	<script src="sdk/scripts/VSS.SDK.min.js"></script>
 	<script src="scripts/coverage.js"></script>
-	<script src="https://kit.fontawesome.com/f221034fdb.js" crossorigin="anonymous"></script>
 
 	<style>
 		.widget_container {
 			display: flex;
-			flex-direction: row;
+			flex-direction: row-reverse;
 			align-items: center;
-			justify-content: space-between;
 		}
 
 		#code_coverage_container {
 			display: flex;
-			/* background-color: cadetblue; */
 			flex-direction: column;
 			margin: 0;
 			padding: 0;
 			align-content: center;
 			align-items: center;
 			height: 100vh;
-			justify-content: center;
-			width: 110px;
-
+			justify-content: flex-end;
 		}
 
 		#code_coverage_stats_container {
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-			position: relative;
-			/* float: left; */
-			/* height: 75%; */
 			width: 220px;
+			margin-left: -20px;
 		}
 
 		#code_coverage {
-			font-size: 35px;
-			margin-top: 2px;
+			font-size: 38px;
+			margin-bottom: 10px;
+			margin-top: 16px;
 
 		}
 
 		#code_coverage_diff {
 			font-size: 18px;
+			margin:0;
+			margin-bottom: 18px;
 		}
 
 		.title {
-			position: absolute;
-			left: 3px;
-			top: -43px;
-			font-size: 26px;
+			font-size: 35px;
+			margin-bottom: 40px;
+			margin-left: -100px;
+			margin-top: -60px;
 		}
 
 		img {
 			width: 20px;
 			height: 20px;
 			float: right;
-  			margin: 0px 0px 15px 20px;
+  			margin: 0px 0px 15px 10px;
+		}
+
+		ul {
+			margin-left: -30px;
 		}
 	</style>
 </head>
@@ -74,8 +70,10 @@
 		<div id="code_coverage_container">
 			<p id="code_coverage"></p>
 			<p id="code_coverage_diff"></p>
-			<img src="img/download.png">
+				
+			
 		</div>
+		<!-- <img src="img/download.png"> -->
 	</div>
 </body>
 
