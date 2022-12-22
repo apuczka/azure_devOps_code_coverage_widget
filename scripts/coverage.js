@@ -75,9 +75,9 @@ VSS.require(["TFS/Dashboards/WidgetHelpers", "TFS/TestManagement/RestClient", "T
 
                                 let coverageDiffFormatted = "";
                                 if (codeCoverageDiff < 0) {
-                                    coverageDiffFormatted = `- ${codeCoverageDiff.toFixed(2)}%`;
+                                    coverageDiffFormatted = `${codeCoverageDiff.toFixed(2)}%`;
                                 } else {
-                                    coverageDiffFormatted =  ` + ${codeCoverageDiff.toFixed(2)}%`;
+                                    coverageDiffFormatted =  `+${codeCoverageDiff.toFixed(2)}%`;
                                 };
 
                                 let thresholdOk = 70; 
@@ -104,8 +104,8 @@ VSS.require(["TFS/Dashboards/WidgetHelpers", "TFS/TestManagement/RestClient", "T
                                 })
                                 let $codeCoverageStatsContainer = $("#code_coverage_stats_container")
                                 let $list = $('<ul>');
-                                $list.append($('<li>').text("Lines covered: " + latestBuildLinesCovered + " (+" + coveredLinesDiff + " lines)"));
-                                $list.append($('<li>').text("Lines total: " + latestBuildLinesTotal + " (+" + totalLinesDiff + " lines)"));
+                                $list.append($('<li>').text("Lines covered: " + latestBuildLinesCovered + " (" + coveredLinesDiff + " lines)"));
+                                $list.append($('<li>').text("Lines total: " + latestBuildLinesTotal + " (" + totalLinesDiff + " lines)"));
                                 $list.append($('<li><a href="' + buildUrl + ' "target="_blank">' + "More details" + '</a>'))
                                 $list.css({ 'list-style-type': 'none', 'padding-top': '0', 'margin-left': '-20px', 'font-size': '12px', 'margin-right':'10px', 'margin-bottom':'-40px', 'display':'flex', 'flex-direction':'column', 'align-items':'flex-end' })
                                 $codeCoverageStatsContainer.append($list)
